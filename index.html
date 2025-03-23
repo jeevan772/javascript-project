@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js clock project</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #433338;
+        }
+
+        .clock-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #646b78;
+
+            border-radius: 10px;
+
+
+        }
+
+        .clock {
+            font-size: 48px;
+            font-weight: bold;
+            color: rgb(244, 17, 17);
+            border: 5px solid rgb(28, 66, 138);
+            background-color: chartreuse;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock-container">
+        <h1 class="clock">00:00:00</h1>
+    </div>
+    <audio src="tickin-clock.pm3" preload="auto"></audio>
+    <script>
+
+        setInterval(() => {
+            const element = document.querySelector(".clock");
+            const audio = document.querySelector("audio");
+            // console.log(element);
+            const time = new Date();
+            const option = {
+                timeZone: 'Asia/Kolkata',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+            }
+
+            element.textContent = time.toLocaleTimeString('en-US', option)
+            audio.play();
+        }, 1000);
+
+    </script>
+</body>
+
+</html>
